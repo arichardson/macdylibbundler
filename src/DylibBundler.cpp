@@ -214,8 +214,8 @@ void collectDependencies(std::string filename)
         if( lines[n].find(".framework") != std::string::npos ) continue; //Ignore frameworks, we can not handle them
         if( lines[n].find("\t" + basename) != std::string::npos)
         {
-            std::cout << "\nignoring self-reference: " << lines[n];
-            std::cout.flush();
+            std::cerr << "\nignoring self-reference: " << lines[n] << std::endl;
+            std::cerr.flush();
             continue;
         }
 
