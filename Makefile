@@ -4,7 +4,7 @@ CXXFLAGS = -O2
 
 all: dylibbundler
 
-dylibbundler:
+dylibbundler: src/Settings.cpp src/DylibBundler.cpp src/Dependency.cpp src/main.cpp src/Utils.cpp
 	$(CXX) $(CXXFLAGS) -c -I./src ./src/Settings.cpp -o ./Settings.o
 	$(CXX) $(CXXFLAGS) -c -I./src ./src/DylibBundler.cpp -o ./DylibBundler.o
 	$(CXX) $(CXXFLAGS) -c -I./src ./src/Dependency.cpp -o ./Dependency.o
