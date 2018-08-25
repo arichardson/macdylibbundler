@@ -199,7 +199,11 @@ void collectDependencies(std::string filename)
 {
     std::vector<std::string> lines;
     collectDependencies(filename, lines);
-       
+
+    std::string::size_type slash_index = filename.rfind("/");
+    slash_index = slash_index == std::string::npos ? 0 : slash_index + 1;
+    std::string basename = filename.substr(slash_index, std::string::npos);
+
     std::cout << "."; fflush(stdout);
     
     const int line_amount = lines.size();
@@ -208,6 +212,12 @@ void collectDependencies(std::string filename)
         std::cout << "."; fflush(stdout);
         if(lines[n][0] != '\t') continue; // only lines beginning with a tab interest us
         if( lines[n].find(".framework") != std::string::npos ) continue; //Ignore frameworks, we can not handle them
+        if( lines[n].find("\t" + basename) != std::string::npos)
+        {
+            std::cout << "\nignoring self-reference: " << lines[n];
+            std::cout.flush();
+            continue;
+        }
 
         // trim useless info, keep only library name
         std::string dep_path = lines[n].substr(1, lines[n].rfind(" (") - 1);
