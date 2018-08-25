@@ -45,6 +45,10 @@ bool bundleLibs_bool = false;
 bool bundleLibs(){ return bundleLibs_bool; }
 void bundleLibs(bool on){ bundleLibs_bool = on; }
 
+bool pretend_bool = false;
+bool pretend(){ return pretend_bool; }
+void pretend(bool on){ pretend_bool = on; }
+
 
 std::string dest_folder_str = "./libs/";
 std::string destFolder(){ return dest_folder_str; }

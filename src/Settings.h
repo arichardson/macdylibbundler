@@ -46,6 +46,9 @@ void canCreateDir(bool permission);
 bool bundleLibs();
 void bundleLibs(bool on);
 
+bool pretend();
+void pretend(bool on);
+
 std::string destFolder();
 void destFolder(std::string path);
 

@@ -61,6 +61,7 @@ void showHelp()
     std::cout << "-of, --overwrite-files (allow overwriting files in output directory)" << std::endl;
     std::cout << "-od, --overwrite-dir (totally overwrite output directory if it already exists. implies --create-dir)" << std::endl;
     std::cout << "-cd, --create-dir (creates output directory if necessary)" << std::endl;
+    std::cout << "--pretend (only print actions that would be performed)" << std::endl;
     std::cout << "-i, --ignore <location to ignore> (will ignore libraries in this directory)" << std::endl;
     std::cout << "-h, --help" << std::endl;
 }
@@ -86,6 +87,11 @@ int main (int argc, char * const argv[])
         {
             i++;
             Settings::inside_lib_path(argv[i]);
+            continue;
+        }
+        else if(strcmp(argv[i],"--pretend")==0)
+        {
+            Settings::pretend(true);
             continue;
         }
         else if(strcmp(argv[i],"-i")==0 or strcmp(argv[i],"--ignore")==0)

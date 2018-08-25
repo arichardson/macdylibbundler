@@ -164,6 +164,10 @@ std::string system_get_output(std::string cmd)
 int systemp(std::string& cmd)
 {
     std::cout << "    " << cmd.c_str() << std::endl;
+    if (Settings::pretend())
+    {
+        return 0;
+    }
     return system(cmd.c_str());
 }
 
